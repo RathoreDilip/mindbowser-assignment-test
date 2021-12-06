@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+<!-- Bootstrap css cdn -->
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+	integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z"
+	crossorigin="anonymous">
+
+<title>Sign In Manager</title>
+</head>
+<body>
+	<div class="container">
+		<h3>Manager Directory</h3>
+		<hr>
+
+		<!-- error message -->
+		<div th:if="${param.error}">
+			<div class="alert alert-danger">Invalid username or password.</div>
+		</div>
+
+
+		<p class="h4 mb-4">Sign In Manager</p>
+
+		<!-- 			<form:form action="${pageContext.request.contextPath}/authenticateTheUser" method="POST"> -->
+		<form action="#" th:action="@{/manager/checkLogin}"
+			th:object="${manager}" method="POST">
+
+			<input type="text" th:field="*{email}"
+				class="form-control mb-4 col-4" placeholder="Email" /> <input
+				type="password" th:field="*{password}" maxlength="10"
+				class="form-control mb-4 col-4" placeholder="Password" />
+
+			<button type="submit" class="btn btn-info col-2">Submit</button>
+
+		</form>
+
+		<hr>
+		<a th:href="@{/manager/signUpforManager}" class="mb-4">Sign Up</a>
+
+
+	</div>
+</body>
+</html>
